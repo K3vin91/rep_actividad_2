@@ -31,25 +31,25 @@ def get_text():               #funcion que recupera lo que se escribe en la caja
 boton1 = tk.Button(vent, text = 'Click', command = get_text)
 
 
-def saludo(nombre):           #funcion que imprime en la consola
-    print('Hola ' + nombre)
+#def saludo(nombre):           #funcion que imprime en la consola
+#    print('Hola ' + nombre)
     
 #boton1 = tk.Button(vent, text = 'Click', command = lambda: saludo('Jose'))
 boton1.pack()
 
 folder_path = tk.StringVar()
 
-def browsedir_button():
+#def browsedir_button():
     #filedir = filedialog.askdirectory()
-    filedir = filedialog.askopenfile()
-    filename = filedir.name
-    folder_path.set(filename)
+#    filedir = filedialog.askopenfile()
+#    filename = filedir.name
+#    folder_path.set(filename)
 
-botondir = tk.Button(text = 'Buscar Dir', command = browsedir_button)
-botondir.pack()
+#botondir = tk.Button(text = 'Buscar Dir', command = browsedir_button)
+#botondir.pack()
 
-textdir = tk.Entry(vent, textvariable = folder_path, width=40)
-textdir.pack()
+#textdir = tk.Entry(vent, textvariable = folder_path, width=40)
+#textdir.pack()
 
 def contar10():
     for i in range (10):
