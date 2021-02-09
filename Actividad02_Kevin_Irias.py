@@ -119,7 +119,6 @@ vv.grid(row = 7, column = 1)
 textResult = tk.Text(vent, font = 'Helvetica 10', bg = 'black', fg = 'yellow')         #cuadro de texto                                
 textResult.grid(row = 9, column = 0, columnspan = 3, padx = (50,50))
 
-#d = {'DF':df.get(), 'ALV':alv.get(), 'ANS':ans.get(), 'ANI':ani.get()}
 
 def calcular():
     ALV = float (alv.get())
@@ -134,8 +133,9 @@ def calcular():
     AP = float (ap.get())
     VV = float (vv.get())
     
+    textResult.delete(1.0, tk.END)
     gds = (ALV*100/DF)*(ANS/ANI)
-    GDS = 'GDS = 'f'{gds:.4} cm/ pixel\n=======================================\n'
+    GDS = 'GSD = 'f'{gds:.4} cm/ pixel\n=======================================\n'
     textResult.insert(tk.END, GDS)
     
     ev = int(1/((DF/1000)/ALV))      #convirtiendo en entero el resultado de la formula
@@ -170,27 +170,24 @@ def calcular():
     NFP = 'Numero de fotos por pasada = 'f'{nfp}\n=======================================\n'
     textResult.insert(tk.END, NFP)
     
-    nfv = nfp*np                     #redondeando el resultado de la formula
+    nfv = round(nfp*np, 2)                     #redondeando el resultado de la formula
     NFV = 'Numero de fotos por vuelo = 'f'{nfv}\n=======================================\n'
     textResult.insert(tk.END, NFV)
     
-    div = (np*LP)+AP
+    div = round((np*LP)+AP, 2)
     DIV = 'Distancia de vuelo = 'f'{div} m\n=======================================\n'
     textResult.insert(tk.END, DIV)
     
-    duv = (nfv*ief)/60
+    duv = round((nfv*ief)/60, 2)
     DUV = 'Duracion del vuelo = 'f'{duv} min\n=======================================\n'
     textResult.insert(tk.END, DUV)
     
+    message = 'Proceso finalizado con exito'
+    showinfo('¡Finish!', message)
+    
+            
 botoncal = tk.Button(text = 'Calcular', font = 'Helvetica 10', command = calcular)
 botoncal.grid(row = 8, column = 1, pady = (10,10))
-
-#def popup_showinfo():
-    
-#    message = 'Ha ocurrido un error, revise los valores ingrasados he intente nuevamente'
-#    showinfo(, message)
-    
-
 
 
 vent.mainloop()
